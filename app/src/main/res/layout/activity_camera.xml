@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".CameraActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_overlay"
+                    android:orientation="vertical">
+
+                    <com.camerakit.CameraKitView
+                        android:id="@+id/camera"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true"
+                        android:background="@color/black_overlay"
+                        android:hardwareAccelerated="true"
+                        android:keepScreenOn="true"
+                        app:camera_facing="back">
+
+                    </com.camerakit.CameraKitView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black_overlay"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/styleSplitButton"
+                            android:layout_width="200dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorBlue"
+                            android:text="Style Spilit" />
+
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/refreshButton"
+                            android:layout_width="200dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:backgroundTint="@color/colorBlue"
+                            android:text="Refresh" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/transferResult"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/black_overlay"
+                    android:foregroundGravity="center_horizontal"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:id="@+id/imageOverlayLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="410dp"
+                    android:background="@color/black_overlay"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/imageOverlayLayout"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/black_overlay"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/pictureRight"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/starry"></ImageView>
+
+                        <ImageView
+                            android:id="@+id/pictureLeft"
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/wave" />
+
+                        <FrameLayout
+                            android:id="@+id/styleSplitorLayout"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent">
+
+                            <View
+                                android:id="@+id/styleSplitor"
+                                android:layout_width="5dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@android:color/holo_orange_light" />
+                        </FrameLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/styleRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/black_overlay"
+                tools:layoutManager="GridLayoutManager"
+                tools:listitem="@layout/recycler_view_item"
+                tools:spanCount="5">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black_overlay"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/facingButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_facing_front"
+                        android:tint="#EEFFFFFF" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/captureButton"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/capture_button" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/flashButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_flash_off"
+                        android:tint="#EEFFFFFF" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

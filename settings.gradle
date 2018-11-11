@@ -1,0 +1,1 @@
+include ':app', ':camerakit-0.9.18', ':camerakit-0.13.0', ':camerakit-0.12.0'
